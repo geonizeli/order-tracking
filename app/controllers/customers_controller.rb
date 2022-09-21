@@ -1,5 +1,8 @@
 class CustomersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_customer, only: %i[ show edit update destroy ]
+
+  layout 'admin'
 
   # GET /customers or /customers.json
   def index

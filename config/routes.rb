@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :orders
-  resources :customers
+  resources :tracking
 
-  root "orders#index"
+  get 'admin' => 'orders#index'
+  scope :admin do
+    resources :orders
+    resources :customers
+  end
+
+  root "tracking#index"
 end
