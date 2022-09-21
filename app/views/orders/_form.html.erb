@@ -6,7 +6,7 @@
   <div class="form-inputs">
     <%= f.association :customer, collection: Customer.all.map { |customer| [customer.full_name, customer.id] }  %>
     <%= f.input :status %>
-    <%= f.input :description %>
+    <%= f.rich_text_area :description %>
   </div>
 
   <div class="form-actions">
