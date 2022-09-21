@@ -4,9 +4,17 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.association :customer, collection: Customer.all.map { |customer| [customer.full_name, customer.id] }  %>
-    <%= f.input :status %>
-    <%= f.rich_text_area :description %>
+    <div class="mb-3">
+      <%= f.association :customer, collection: Customer.all.map { |c| [c.full_name, c.id] }  %>
+    </div>
+    <div class="mb-3">
+      <%= f.input :status %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :description, class: 'mb-3' %>
+      <%= f.rich_text_area :description %>
+    </div>
   </div>
 
   <div class="form-actions">
