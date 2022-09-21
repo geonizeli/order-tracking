@@ -2,9 +2,8 @@
 
 <%= render @order %>
 
-<div>
-  <%= link_to "Edit this order", edit_order_path(@order) %> |
-  <%= link_to "Back to orders", orders_path %>
-
-  <%= button_to "Destroy this order", @order, method: :delete %>
+<div class="btn-toolbar" role="toolbar"">
+  <%= link_to "Edit this order", edit_order_path(@order), class: 'me-2 btn btn-secondary' %>
+  <%= link_to "Back to orders", orders_path , class: 'me-2 btn btn-secondary' %>
+  <%= button_to "Destroy this order", @order, method: :delete, class: 'me-2 btn btn-danger' %>
 </div>

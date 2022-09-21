@@ -7,8 +7,7 @@
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
+        <th scope="col">Name</th>
         <th scope="col">Created at</th>
         <th scope="col">Updated at</th>
         <th></th>
@@ -18,8 +17,7 @@
       <% @customers.each do |customer| %>
         <tr>
           <th scope="row"><%= customer.id %></th>
-          <td><%= customer.first_name %></td>
-          <td><%= customer.last_name %></td>
+          <td><%= customer.full_name %></td>
           <td><%= l customer.created_at %></td>
           <td><%= l customer.updated_at %></td>
           <td><%= link_to "Show this customer", customer %></td>
