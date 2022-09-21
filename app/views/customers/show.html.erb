@@ -1,0 +1,9 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @customer %>
+
+<div class="btn-toolbar" role="toolbar"">
+  <%= link_to "Edit this customer", edit_customer_path(@customer), class: 'me-2 btn btn-secondary' %>
+  <%= link_to "Back to customers", customers_path , class: 'me-2 btn btn-secondary' %>
+  <%= button_to "Destroy this customer", @customer, method: :delete, class: 'me-2 btn btn-danger' %>
+</div>
