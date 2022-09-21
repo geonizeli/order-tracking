@@ -73,3 +73,9 @@ gem "simple_form", "~> 5.1"
 gem "devise", "~> 4.8"
 
 gem "enumerize", "~> 2.5"
+
+gem "rails-i18n", "~> 7.0"
+
+gem "devise-i18n", "~> 1.10"
+
+gem "noticed", "~> 1.5"
