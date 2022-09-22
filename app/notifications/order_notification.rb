@@ -4,7 +4,6 @@
 # OrderNotification.with(post: @post).deliver(current_user)
 
 class OrderNotification < Noticed::Base
-  deliver_by :email
   deliver_by :twilio
 
   def format_for_twilio
