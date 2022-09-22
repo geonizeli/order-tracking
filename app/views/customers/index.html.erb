@@ -14,8 +14,8 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Name</th>
-        <th scope="col">Created at</th>
         <th scope="col">Updated at</th>
+        <th scope="col">Created at</th>
         <th></th>
       </tr>
     </thead>
@@ -24,8 +24,8 @@
         <tr>
           <th scope="row"><%= customer.id %></th>
           <td><%= customer.full_name %></td>
-          <td><%= l customer.created_at %></td>
-          <td><%= l customer.updated_at %></td>
+          <td><%= show_time_ago_if_recent customer.updated_at %></td>
+          <td><%= show_time_ago_if_recent customer.created_at %></td>
           <td><%= link_to "Show this customer", customer %></td>
         </tr>
       <% end %>
