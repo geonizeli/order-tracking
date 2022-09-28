@@ -27,11 +27,18 @@
         <tr>
           <th scope="row"><%= order.id %></th>
           <td scope="row"><%= order.public_id %></td>
-          <td scope="row"><%= order.customer.full_name %></td>
+          <td scope="row"><%= link_to order.customer.full_name, customer_path(order.customer) %></td>
           <td scope="row"><%= order.status_text %></td>
           <td scope="row"><%= show_time_ago_if_recent order.updated_at %></td>
           <td scope="row"><%= show_time_ago_if_recent order.created_at %></td>
-          <td scope="row"><%= link_to "Show this order", order %></td>
+          <td scope="row">
+            <%= link_to edit_order_path(order), class: 'btn btn-secondary' do %>
+              <i class="bi bi-pencil-fill"></i>
+            <% end %>
+            <%= link_to order, class: 'btn btn-secondary' do %>
+              <i class="bi bi-eye-fill"></i>
+            <% end %>
+          </td>
         </tr>
       <% end %>
     </tbody>
