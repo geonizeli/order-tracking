@@ -6,7 +6,13 @@ class OrdersController < ApplicationController
 
   # GET /orders or /orders.json
   def index
-    @pagy, @orders = pagy(Order.all)
+    @order_status = params[:status] || 'pending'
+    @pending_orders_count = Order.where(status: :pending).count
+    @processing_orders_count = Order.where(status: :processing).count
+    @completed_orders_count = Order.where(status: :completed).count
+    @canceled_orders_count = Order.where(status: :canceled).count
+
+    @pagy, @orders = pagy(Order.where(status: @order_status))
   end
 
   # GET /orders/1 or /orders/1.json
