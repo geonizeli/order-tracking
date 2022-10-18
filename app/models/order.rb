@@ -11,6 +11,19 @@ class Order < ApplicationRecord
   after_commit :notify_status_update
   before_validation :set_public_id, on: :create
 
+  def next_status
+    case status.to_sym
+    when :pending
+      :processing
+    when :processing
+      :completed
+    else
+      nil
+    end
+  end
+
+  private
+
   def notify_status_update
     return unless previous_changes.has_key?(:status)
 

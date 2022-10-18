@@ -7,12 +7,22 @@ class OrdersController < ApplicationController
   # GET /orders or /orders.json
   def index
     @order_status = params[:status] || 'pending'
-    @pending_orders_count = Order.where(status: :pending).count
-    @processing_orders_count = Order.where(status: :processing).count
-    @completed_orders_count = Order.where(status: :completed).count
-    @canceled_orders_count = Order.where(status: :canceled).count
+    @pending_orders = Order.where(status: :pending)
+    @processing_orders = Order.where(status: :processing)
+    @completed_orders = Order.where(status: :completed)
+    @canceled_orders = Order.where(status: :canceled)
 
-    @pagy, @orders = pagy(Order.where(status: @order_status))
+    if params[:view_mode] == 'list'
+      @pagy, @orders = pagy(Order.where(status: @order_status))
+    else
+      @columns = [
+        ['Pending', @pending_orders],
+        ['Processing', @processing_orders],
+        ['Completed', @completed_orders]
+      ]
+
+      render 'index_column_view'
+    end
   end
 
   # GET /orders/1 or /orders/1.json

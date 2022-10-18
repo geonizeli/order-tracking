@@ -11,16 +11,16 @@
 
 <div class="my-4 grid gap-3">
   <%= link_to orders_path(status: :pending), class: "btn btn-light rounded-pill #{@order_status == 'pending' && "active"}" do %>
-    Pending <span class="badge bg-danger text-bg-secondary"><%= @pending_orders_count %></span>
+    Pending <span class="badge bg-danger text-bg-secondary"><%= @pending_orders.count %></span>
   <% end %>
   <%= link_to orders_path(status: :processing), class: "btn btn-light rounded-pill #{@order_status == 'processing' && "active"}" do %>
-    Processing <span class="badge bg-danger text-bg-secondary"><%= @processing_orders_count %></span>
+    Processing <span class="badge bg-danger text-bg-secondary"><%= @processing_orders.count %></span>
   <% end %>
   <%= link_to orders_path(status: :completed), class: "btn btn-light rounded-pill #{@order_status == 'completed' && "active"}" do %>
-    Completed <span class="badge bg-success text-bg-secondary"><%= @completed_orders_count %></span>
+    Completed <span class="badge bg-success text-bg-secondary"><%= @completed_orders.count %></span>
   <% end %>
   <%= link_to orders_path(status: :canceled), class: "btn btn-light rounded-pill #{@order_status == 'canceled' && "active"}" do %>
-    Canceled <span class="badge text-bg-secondary"><%= @canceled_orders_count %></span>
+    Canceled <span class="badge text-bg-secondary"><%= @canceled_orders.count %></span>
   <% end %>
 </div>
 
