@@ -1,2 +1,17 @@
-<h1>Tracking#index</h1>
-<p>Find me in app/views/tracking/index.html.erb</p>
+<main>
+  <div class="px-4 py-5 my-5 text-center">
+    <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/5.2/assets/brand/bootstrap-logo-shadow.png" alt="" width="72" height="57">
+    <h1 class="display-5 fw-bold">Order Tracking</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">First, write your order number or email address. Then click the button "Track".</p>
+
+        <%= form_with url: "/tracking", method: :get do |form| %>
+        <%= form.text_field :query, class: "form-control", placeholder: "email@example.com" %>
+
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-4">
+            <%= form.submit "Track", class: "btn btn-primary btn-lg px-4 gap-3" %>
+        </div>
+        <% end %>
+    </div>
+  </div>
+</main>
