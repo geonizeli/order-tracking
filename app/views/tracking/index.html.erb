@@ -1,17 +1,42 @@
+
 <main>
-  <div class="px-4 py-5 my-5 text-center">
+  <div class="px-4 pt-5 mt-5 text-center">
     <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/5.2/assets/brand/bootstrap-logo-shadow.png" alt="" width="72" height="57">
     <h1 class="display-5 fw-bold">Order Tracking</h1>
     <div class="col-lg-6 mx-auto">
       <p class="lead mb-4">First, write your order number or email address. Then click the button "Track".</p>
 
         <%= form_with url: "/tracking", method: :get do |form| %>
-        <%= form.text_field :query, class: "form-control", placeholder: "email@example.com" %>
+        <%= form.text_field :query, class: "form-control", placeholder: "email@example.com", value: params[:query] %>
+
+        <% if @notice %>
+          <div class="alert alert-danger mt-4" role="alert">
+            <%= @notice %>
+          </div>
+        <% end %>
 
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mt-4">
             <%= form.submit "Track", class: "btn btn-primary btn-lg px-4 gap-3" %>
         </div>
         <% end %>
     </div>
+  </div>
+
+  <div class="p-3">
+    <% @orders&.each do |order| %>
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Order <%= order.public_id %></h5>
+          <h6 class="card-subtitle mb-2 text-muted">
+            <%= time_tag(order.created_at) %> - <%= order.status_text %>
+          </h6>
+          <% if order.description.present? %>
+            <p class="card-text">
+              <%= order.description %>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </main>
