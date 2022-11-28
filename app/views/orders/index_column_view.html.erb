@@ -22,7 +22,11 @@
         <% orders.each do |order| %>
           <div class="card">
             <div class="card-header d-flex justify-content-between">
-              <div># <%= order.id %></div>
+              <div>
+                <%= link_to order do %>
+                  # <%= order.id %>
+                <% end %>
+              </div>
               <% unless is_last_step %>
                 <div>
                   <% order.status = order.next_status %>
